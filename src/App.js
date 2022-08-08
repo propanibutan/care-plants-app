@@ -4,7 +4,8 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import NotFound from './components/NotFound';
+import Home from './pages/Home.js'
+import NotFound from './components/NotFound.js';
 
 const App = () => {
   return (
