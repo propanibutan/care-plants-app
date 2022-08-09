@@ -1,28 +1,43 @@
 import React from 'react';
-import { Container, Grid, Fab } from '@mui/material';
+import { Container, Grid, Fab, Typography, Box, TextField, Checkbox, Link, FormControlLabel, Button } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+
+import logo from '../assets/6a8834e04b1a49a38bf2313df14897b41.png'
+
+//Here is my LogIn page plus login functiongit 
+
 
 export default function LogIn(){
     return (
         <Container maxWidth='xl' sx={{ height: '100vh', backgroundColor: '#c2f2ff', flexGrow: 1 }}>
             <Grid container spacing={2}>
-                <Grid item>
-                    <Fab color="primary" aria-label="exit">
+                <Grid item xs={6}>
+                    <Fab href="/" size="small"color="primary" aria-label="exit">
                         <CloseRoundedIcon />
                     </Fab>
-                    {/* <Item>xs=8</Item>
-                    <Item>xs=8</Item> */}
+                </Grid>
+                <Grid item xs={6}>
+                    <img src={logo} alt="Logo with name Plant Care App" style={{ width: '200px' }} /> 
+                </Grid>
+                <Grid item xs={12}>
+                    <Typography variant='h3'>Hello Again!</Typography>
+                    <Box
+                    component="form"
+                    sx={{
+                        '& > :not(style)': { m: 1, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                    >
+                        <TextField id="outlined-basic" label="Email" variant="outlined" />
+                        <TextField id="outlined-basic" label="Password" type="password" variant="outlined" />
+                        <FormControlLabel control={<Checkbox defaultChecked />} label="Remember Me" />
+                        <Link href="/recoveryPassword" variant="body2">Recovery Password</Link>
+                        <Button variant="contained" type="submit">Login</Button>
+                    </Box>
                 </Grid>
                 <Grid item>
-                    {/* <Item>xs=8</Item>
-                    <Item>xs=8</Item>
-                    <Item>xs=8</Item>
-                    <Item>xs=8</Item>
-                    <Item>xs=8</Item> */}
-                </Grid>
-                <Grid item>
-                    {/* <Item>xs=8</Item>
-                    <Item>xs=8</Item> */}
+                    <Link variant="body2">Are you here first time? Sign Up!</Link>
                 </Grid>
             </Grid>
         </Container>
