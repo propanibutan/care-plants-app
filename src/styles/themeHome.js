@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material';
 
 //Here is my custom theme for app
-const theme = createTheme({ 
+const themeHome = createTheme({ 
     components:{
 
         MuiListItem: {
@@ -41,4 +41,4 @@ const theme = createTheme({
     },
   });
 
-  export default theme;
+  export default themeHome;
