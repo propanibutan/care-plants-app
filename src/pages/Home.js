@@ -22,7 +22,7 @@ export default function Home(){
                     <Tooltip title="by catalyststuff"><img src={girl} alt="Girl planting flower by catalyststuff" style={{ maxWidth: '300px' }} /></Tooltip> 
                 </Grid>
                 <Grid item>
-                    <Button href="#" variant="contained" endIcon={<KeyboardDoubleArrowRightIcon sx={{ color: 'white' }} />}>Start now!</Button>
+                    <Button href="/LogIn" variant="contained" endIcon={<KeyboardDoubleArrowRightIcon sx={{ color: 'white' }} />}>Start now!</Button>
                 </Grid>
                 <Grid item>
                     <Accordion sx={{ maxWidth: '350px' }}>
