@@ -54,7 +54,7 @@ export default function Home(){
                             <ListItemAvatar>
                                 <YardRoundedIcon />
                             </ListItemAvatar>
-                            <ListItemText>searching plants in external database (soon or never)</ListItemText>
+                            <ListItemText>searching plants from external database (soon or never)</ListItemText>
                         </ListItem>
                     </List>
                 </Grid>
