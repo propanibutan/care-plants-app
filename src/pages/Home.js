@@ -1,35 +1,31 @@
 import React from 'react';
 import { Container, Grid, Button, Typography, Accordion, AccordionSummary, AccordionDetails, List, ListItem, ListItemAvatar, ListItemText, Tooltip } from '@mui/material';
+
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import YardRoundedIcon from '@mui/icons-material/YardRounded';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import logo from '../assets/logo-photo2.png'
+
+import girl from '../assets/logo-photo3.png'
+import logo from '../assets/6a8834e04b1a49a38bf2313df14897b41.png'
+import { maxWidth } from '@mui/system';
 
 // Here is landing page for my web app
 
 export default function Home(){
     return (
-        <Container maxWidth='lg' sx={{ height: '100vh', width:'100vw', backgroundColor: '#c2f2ff' }}>
-            <Grid container spacing={2} justifyContent="center" alignItems="center"  direction="column" sx={{ minHeight: '100vh', gridTemplateRows: 'repeat(2)', rowGap: 3 }}>
-                <Grid item sx={{ display: 'flex', alignItems:'center' }}>
-                    <Typography sx={{ 
-                        fontFamily: 'Mouse Memoirs', 
-                        letterSpacing: '1px', 
-                        color:'#e7a81c', 
-                        textAlign:'right', 
-                        alignSelf: 'center', 
-                        textShadow:'2px 4px 3px #5a402c', 
-                        mr: 1 
-                        }} variant='h3'>
-                        Take care about your plants.
-                    </Typography>
-                    <Tooltip title="by catalyststuff"><img src={logo} alt="Logo girl by catalyststuff" style={{ maxWidth: '150px' }} /></Tooltip>
+        <Container maxWidth='lg' sx={{ height: '100vh', backgroundColor: '#c2f2ff' }}>
+            <Grid container spacing={3} alignItems="center"  direction="column" sx={{ minHeight: '100vh', gridTemplateRows: 'repeat(2)' }}>
+                <Grid item>
+                    <img src={logo} alt="Logo with name Plant Care App" style={{ width: '200px' }} /> 
+                </Grid>
+                <Grid item>
+                    <Tooltip title="by catalyststuff"><img src={girl} alt="Girl planting flower by catalyststuff" style={{ maxWidth: '300px' }} /></Tooltip> 
                 </Grid>
                 <Grid item>
                     <Button href="#" variant="contained" endIcon={<KeyboardDoubleArrowRightIcon sx={{ color: 'white' }} />}>Start now!</Button>
                 </Grid>
                 <Grid item>
-                    <Accordion>
+                    <Accordion sx={{ maxWidth: '350px' }}>
                         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
                             <Typography variant='subtitle1' sx={{ color:'#390277', fontWeight: '700'}}>About App</Typography>
                         </AccordionSummary>
