@@ -5,8 +5,10 @@ import {
   Routes,
 } from 'react-router-dom';
 import Menu from './pages/Menu.js';
+import SignUp from './components/SignUp.js';
 import IsLoggedIn from './components/IsLoggedIn.js';
 import LogIn from './components/LogIn.js';
+import LogOut from './components/LogOut.js';
 import NotFound from './components/NotFound.js';
 
 
@@ -16,6 +18,8 @@ const App = () => {
         <Routes>
           <Route path='/' element={<IsLoggedIn />} />
           <Route path='/login' element={<LogIn />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/logout' element={<LogOut />} />
           <Route path='/menu' element={<Menu />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

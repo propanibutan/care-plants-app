@@ -4,9 +4,10 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 
 import logo from '../assets/6a8834e04b1a49a38bf2313df14897b41.png'
 
-//Here is my LogIn page
+//Here is my sign up page
 
-export default function LogInForm(){
+export default function SignUpForm({ register, setRegisterEmail, setRegisterPassword }){
+
     return (
         <Container maxWidth='xl' sx={{ backgroundColor: '#c2f2ff', flexGrow: 1 }}>
             <Grid container spacing={4} alignItems="center"  direction="column" sx={{ minHeight: '100vh' }}>
@@ -15,9 +16,12 @@ export default function LogInForm(){
                         <CloseRoundedIcon />
                     </Fab>
                     <img src={logo} alt="Logo with name Plant Care App" sx={{ width: '200px' }} /> 
+                    
                 </Grid>
                 <Grid item>
-                    <Typography variant='h4' sx={{ textAlign: 'center' }}>Hello Again!</Typography>
+                    <Typography variant='h5' sx={{ textAlign: 'center' }}>Hi, nice to see you!</Typography>
+                </Grid>
+                <Grid item>
                     <Box
                      component="form"
                      sx={{
@@ -29,31 +33,24 @@ export default function LogInForm(){
                      flexDirection="column"
                     >
                         <TextField 
-                            required
-                            id="outlined-required" 
-                            label="E-mail" 
-                            variant="outlined"
-                            value={loginEmail}
-                            onChange={(event) => {
-                                setLoginEmail(event.target.value);
-                            }}  
+                         id="outlined-basic" 
+                         label="E-mail" 
+                         variant="outlined"
+                         onChange={(event) => {
+                             setRegisterEmail(event.target.value);
+                         }} 
                         />
                         <TextField
-                            id="outlined-required"
-                            label="Password"
-                            type="password" 
-                            value={loginPassword}
-                            onChange={(event) => {
-                                setLoginPassword(event.target.value);
-                            }} 
-                         />
+                         id="outlined-basic"
+                         label="Password"
+                         type="password" 
+                         onChange={(event) => {
+                             setRegisterPassword(event.target.value);
+                         }} 
+                        />
                         <FormControlLabel control={<Checkbox defaultChecked />} label="Remember Me" />
-                        <Link href="/recoveryPassword" variant="body2">Recovery Password</Link>
-                        <Button variant="contained" type="submit">Login</Button>
+                        <Button variant="contained" type="submit" onClick={register}>Sign up</Button>
                     </Box>
-                </Grid>
-                <Grid item>
-                    <Link href="/signup" variant="body2">Are you here first time? Sign Up!</Link>
                 </Grid>
             </Grid>
         </Container>
