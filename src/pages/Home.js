@@ -21,7 +21,7 @@ export default function Home(){
                         <img src={logo} alt="Logo with name Plant Care App" style={{ width: '200px' }} /> 
                     </Grid>
                     <Grid item>
-                        <Tooltip title="by catalyststuff"><img src={girl} alt="Girl planting flower by catalyststuff" style={{ maxWidth: '300px' }} /></Tooltip> 
+                        <img src={girl} alt="Girl planting flower by catalyststuff" style={{ maxWidth: '300px' }} />
                     </Grid>
                     <Grid item>
                         <Button href="/login" variant="contained" endIcon={<KeyboardDoubleArrowRightIcon sx={{ color: 'white' }} />}>Start now!</Button>

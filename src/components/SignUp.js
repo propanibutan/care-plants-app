@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../firebase-config';
 import SignUpForm from '../pages/SignUpForm';
-import { auth } from '../firebase-config'
 
 //Component which maintains signup form functions
 

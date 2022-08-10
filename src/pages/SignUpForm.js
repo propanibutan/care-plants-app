@@ -19,7 +19,7 @@ export default function SignUpForm({ register, setRegisterEmail, setRegisterPass
                     
                 </Grid>
                 <Grid item>
-                    <Typography variant='h5' sx={{ textAlign: 'center' }}>Hi, nice to see you!</Typography>
+                    <Typography variant='h5' sx={{ textAlign: 'center' }}>You can sign up:</Typography>
                 </Grid>
                 <Grid item>
                     <Box
@@ -48,8 +48,8 @@ export default function SignUpForm({ register, setRegisterEmail, setRegisterPass
                              setRegisterPassword(event.target.value);
                          }} 
                         />
-                        <FormControlLabel control={<Checkbox defaultChecked />} label="Remember Me" />
-                        <Button variant="contained" type="submit" onClick={register}>Sign up</Button>
+                        <FormControlLabel control={<Checkbox />} label="Remember Me" />
+                        <Button href="/menu" variant="contained" type="submit" onClick={register}>Sign up</Button>
                     </Box>
                 </Grid>
             </Grid>

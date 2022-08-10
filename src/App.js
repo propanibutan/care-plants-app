@@ -19,7 +19,6 @@ const App = () => {
           <Route path='/' element={<IsLoggedIn />} />
           <Route path='/login' element={<LogIn />} />
           <Route path='/signup' element={<SignUp />} />
-          <Route path='/logout' element={<LogOut />} />
           <Route path='/menu' element={<Menu />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
