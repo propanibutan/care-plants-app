@@ -13,6 +13,6 @@ export default function LogOut() {
     };
 
     return (
-        <Button onClick={ logout }>Sign out</Button>
+        <Button variant="contained" onClick={ logout }>Sign out</Button>
     );
 }

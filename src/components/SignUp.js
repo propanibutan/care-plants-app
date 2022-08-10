@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase-config';
 import SignUpForm from '../pages/SignUpForm';
+import Menu from '../pages/Menu';
 
 //Component which maintains signup form functions
 
-export default function SignUp() {
+export default function SignUp({signedInUser}) {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
     
@@ -23,10 +24,12 @@ export default function SignUp() {
     };
 
     return (
-        <SignUpForm 
+        !signedInUser
+        ? <SignUpForm 
             register={register}
             setRegisterEmail={setRegisterEmail}
             setRegisterPassword={setRegisterPassword}
         />
+        : <Menu />
     );
 }

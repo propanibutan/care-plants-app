@@ -31,6 +31,7 @@ export default function SignUpForm({ register, setRegisterEmail, setRegisterPass
                      autoComplete="off"
                      display='flex'
                      flexDirection="column"
+                     onClick={register}
                     >
                         <TextField 
                          id="outlined-basic" 
@@ -49,7 +50,7 @@ export default function SignUpForm({ register, setRegisterEmail, setRegisterPass
                          }} 
                         />
                         <FormControlLabel control={<Checkbox />} label="Remember Me" />
-                        <Button href="/menu" variant="contained" type="submit" onClick={register}>Sign up</Button>
+                        <Button variant="contained">Sign up</Button>
                     </Box>
                 </Grid>
             </Grid>

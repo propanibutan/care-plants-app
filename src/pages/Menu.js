@@ -1,19 +1,16 @@
 import React from 'react';
 import LogOut from '../components/LogOut';
-import Home from './Home';
 import { Container, Typography } from '@mui/material';
 
-
-
 export default function Menu({ signedInUser }) {
-    console.log(signedInUser);
+    console.log('menu:', signedInUser);
 
-        if (signedInUser !== undefined) {
+    const loggedUser = signedInUser;
+    console.log('menu:', loggedUser);
+
         return  <Container maxWidth='xl' sx={{ backgroundColor: '#c2f2ff', flexGrow: 1 }}>
                     <Typography>User Logged in: </Typography>
-                    {signedInUser?.email}
+                    {loggedUser?.email}
                     <LogOut />
                 </Container>
-        } else {
-        return <Home />}
 }

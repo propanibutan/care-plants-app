@@ -16,10 +16,9 @@ export default function LoggedIn() {
                 loginEmail, 
                 loginPassword
             );
-            console.log(user);
-            
+            console.log('loggedin:', user);
         } catch (error) {
-            console.log(error.message); 
+            console.log('loggedin:' ,error.message); 
         }
     };
 
