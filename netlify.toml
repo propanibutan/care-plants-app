@@ -1,0 +1,14 @@
+[build]
+    publish = "build"
+
+[[redirects]]
+  from = "/"
+  to = "/app/home"
+
+[[redirects]]
+  from = "/login"
+  to = "/app/login"
+
+[[redirects]]
+  from = "/menu"
+  to = "/app/menu"
