@@ -27,6 +27,7 @@ export default function LogInForm({ login, setLoginEmail, setLoginPassword }){
                      autoComplete="off"
                      display='flex'
                      flexDirection="column"
+                     onClick={login}
                     >
                         <TextField 
                             id="outlined-basic" 
@@ -46,7 +47,7 @@ export default function LogInForm({ login, setLoginEmail, setLoginPassword }){
                          />
                         <FormControlLabel control={<Checkbox />} label="Remember Me" />
                         <Link href="/recoveryPassword" variant="body2">Recovery Password</Link>
-                        <Button variant="contained" onClick={login}>Login</Button>
+                        <Button variant="contained">Login</Button>
                     </Box>
                 </Grid>
                 <Grid item>
