@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, MenuItem, ButtonBase } from '@mui/material';
+import { Menu, MenuItem, ButtonBase, Tooltip } from '@mui/material';
 import LogOut from '../components/LogOut';
 import iconprofile from '../assets/gardener.png';
 
@@ -28,7 +28,9 @@ export default function AccountMenu() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
         >
-        <img src={iconprofile} alt="Profile icon" width="42px" />     
+            <Tooltip title="Profile" arrow>
+                <img src={iconprofile} alt="Profile icon" width="42px" />
+            </Tooltip>     
       </ButtonBase>
       <Menu
         id="demo-positioned-menu"
