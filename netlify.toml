@@ -3,12 +3,12 @@
 
 [[redirects]]
   from = "/"
-  to = "/app/home"
+  to = "https://62f4b52d324ac20d83b7d1ee--plant-care-app.netlify.app/"
 
 [[redirects]]
   from = "/login"
-  to = "/app/login"
+  to = "https://62f4b52d324ac20d83b7d1ee--plant-care-app.netlify.app/login"
 
 [[redirects]]
   from = "/menu"
-  to = "/app/menu"
+  to = "https://62f4b52d324ac20d83b7d1ee--plant-care-app.netlify.app/menu"
