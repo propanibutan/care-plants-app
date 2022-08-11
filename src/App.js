@@ -14,19 +14,39 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase-config';
 
 const App = () => {
-  const [signedInUser, setSignedInUser] = useState({});
+  const [signedInUser, setSignedInUser] = useState(null);
   console.log('App1', signedInUser)
 
   onAuthStateChanged(auth, (currentUser) => {
     setSignedInUser(currentUser);
   });
 
+  // TUTAJ MI SIE NIE PODOBA ZE MUSZE UZYWAC NAVIGATE PRZY KAZDYM ROUCIE
+  //KIEDY CHCE ZEBY ZALOGOWANY UZYTKOWNIK NIE WIDZIAŁ LOGIN I SIGNUP
   return (
       <Router>
         <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<LogIn />} />
-          <Route path='/signup' element={<SignUp signedInUser={signedInUser} />} />
+          <Route 
+          path='/' 
+          element={
+            !signedInUser
+            ?<Home />
+            :<Navigate replace to={"/menu"} />
+          } />
+          <Route 
+          path='/login' 
+          element={
+            signedInUser === null || undefined
+            ?<LogIn />
+            :<Navigate replace to={"/menu"} /> 
+          } />
+          <Route 
+          path='/signup' 
+          element={
+            signedInUser === null || undefined
+            ?<SignUp />
+            :<Navigate replace to={"/menu"} /> 
+          } />
           <Route 
           path='/menu' 
           element={
