@@ -1,13 +1,27 @@
 import React from 'react';
-import LogOut from '../components/LogOut';
+import AccountMenu from '../utils/AccountMenu';
 import { ThemeProvider } from '@mui/material';
 import themeMenu from '../styles/themeMenu';
-import { Container, Typography, Paper, Grid, Button, Box, CssBaseline, AppBar, Toolbar, Fab, useScrollTrigger, Zoom, createTheme, Tooltip, styled } from '@mui/material';
+import { 
+    Container, 
+    Typography, 
+    Paper, Grid, 
+    Button, 
+    CssBaseline, 
+    AppBar, 
+    Toolbar, 
+    Fab, 
+    useScrollTrigger,
+    Zoom, 
+    createTheme, 
+    Tooltip, 
+    styled 
+} from '@mui/material';
+
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import logo from '../assets/6a8834e04b1a49a38bf2313df14897b41.png';
 import sadface from '../assets/sadface.png';
 import plusplant from '../assets/plant-tree.png';
-import iconprofile from '../assets/gardener.png';
 import iconplantbase from '../assets/plant-pot.png';
 import iconcalendar from '../assets/calendar.png';
 import iconresearch from '../assets/research.png';
@@ -67,7 +81,7 @@ export default function Menu({ signedInUser }) {
         <ThemeProvider theme={themeMenu}>
             <Container maxWidth='xl' sx={{ flexGrow: 1 }}>
                 <Grid container alignItems="center" direction="column" sx={{ minHeight: '100vh' }}>
-                    <Paper container spacing={4} elevation={3} sx={{ backgroundColor: '#c2f2ff'}} > 
+                    <Paper spacing={4} elevation={3} sx={{ backgroundColor: '#c2f2ff'}}> 
                         <Grid item display="flex" justifyContent="center">
                             <img src={logo} alt="Logo with name Plant Care App" sx={{ maxWidth: '200px' }} />
                         </Grid>
@@ -89,56 +103,43 @@ export default function Menu({ signedInUser }) {
                                 <Tooltip title="Add plant" arrow><img src={plusplant} alt="Button with adding plant to base" width="42px" /></Tooltip>
                             </Button>
                         </Grid>
-                        <Grid item position="relative">
+                        <Grid item position="relative" sx={{mt: 3}}>
                             <CssBaseline />
                             <AppBar position="absolute" color="primary" sx={{ top: 'auto', bottom: 0, borderRadius: '30px 30px 0 0' }}>
                                 <Toolbar 
                                 sx={{ 
                                 display:'flex', 
                                 justifyContent:{ xs:'space-evenly', xl:'center'}, 
-                                gap:{ xl:4 }
+                                gap:{ xl:4 },
                                 }}
                                 >
-                                    <Fab color="secondary" size="small">
-                                        <img src={iconprofile} alt="Profile icon" width="42px" />
-                                    </Fab>
-                                    <Fab href="/" color="secondary" size="small">
-                                        <img src={iconplantbase} alt="Database icon" width="42px" />
+                                    <AccountMenu />
+                                    <Fab href="/plantsbase" color="secondary" size="small">
+                                    <Tooltip title="Plants Database" arrow><img src={iconplantbase} alt="Database icon" width="42px" /></Tooltip>
                                     </Fab>
                                     <ScrollTop>
                                         <StyledFab color="secondary" size="small">
                                             <KeyboardArrowUpIcon />
                                         </StyledFab>
                                     </ScrollTop>
-                                    <Fab href="/" color="secondary" size="small">
-                                        <img src={iconcalendar} alt="Calendar icon" width="42px" />
+                                    <Fab href="/calendar" color="secondary" size="small">
+                                    <Tooltip title="Plants Calendar" arrow><img src={iconcalendar} alt="Calendar icon" width="42px" /></Tooltip>
                                     </Fab>
-                                    <Fab href="/" color="secondary" size="small">
-                                        <img src={iconresearch} alt="Search icon" width="42px" />
+                                    <Fab color="secondary" size="small">
+                                    <Tooltip title="Search new plant" arrow><img src={iconresearch} alt="Search icon" width="42px" /></Tooltip>
                                     </Fab>
                                 </Toolbar>
                             </AppBar>
                             <Toolbar id="top" />
-
-
-
-
-                                    
-                                    <Container>
-                                        <Box my={2}>
-                                        {[...new Array(100)]
-                                            .map(() => `Lorem ipsum dolor sit amet`)
-                                            .join("n")}
-                                    </Box>
-                                </Container>
                         </Grid>
                             
 
                         <Grid item>
-                            <LogOut />
                             <Typography variant="body2">User Logged in: </Typography>
                             {signedInUser?.email}
                         </Grid>
+
+
                     </ Paper> 
                 </Grid>
             </Container>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from '@mui/material';
 import themeHome from '../styles/themeHome';
-import { Container, Grid, Button, Typography, Accordion, AccordionSummary, AccordionDetails, List, ListItem, ListItemAvatar, ListItemText, Tooltip } from '@mui/material';
+import { Container, Grid, Button, Typography, Accordion, AccordionSummary, AccordionDetails, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import YardRoundedIcon from '@mui/icons-material/YardRounded';

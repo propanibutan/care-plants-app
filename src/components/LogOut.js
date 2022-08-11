@@ -1,7 +1,7 @@
-import { signOut, onAuthStateChanged } from 'firebase/auth';
+import { signOut } from 'firebase/auth';
 import { auth } from '../firebase-config';
 import React from 'react'
-import { Button } from '@mui/material';
+import { MenuItem } from '@mui/material';
 
 
 //Component which maintains log out functions
@@ -13,6 +13,6 @@ export default function LogOut() {
     };
 
     return (
-        <Button variant="contained" onClick={ logout }>Sign out</Button>
+        <MenuItem onClick={ logout }>Logout</MenuItem>
     );
 }
