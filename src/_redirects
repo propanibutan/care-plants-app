@@ -1,6 +1,6 @@
 # Redirects from what the browser requests to what we serve
-/                  /
-/menu              /menu
-/login             /login
+/                  https://62f4b52d324ac20d83b7d1ee--plant-care-app.netlify.app/
+/menu              https://62f4b52d324ac20d83b7d1ee--plant-care-app.netlify.app/menu
+/login             https://62f4b52d324ac20d83b7d1ee--plant-care-app.netlify.app/login
 /signup            /signup
 /*                 /*
