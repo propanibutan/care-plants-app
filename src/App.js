@@ -22,8 +22,6 @@ const App = () => {
     setSignedInUser(currentUser);
   });
 
-  // TUTAJ MI SIE NIE PODOBA ZE MUSZE UZYWAC NAVIGATE PRZY KAZDYM ROUCIE
-  //KIEDY CHCE ZEBY ZALOGOWANY UZYTKOWNIK NIE WIDZIAŁ LOGIN I SIGNUP
   return (
       <Router>
         <Routes>
