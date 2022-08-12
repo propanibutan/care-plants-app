@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase-config';
 import { collection, getDocs } from 'firebase/firestore';
-import PlantsBase from '../pages/PlantsBase';
+import PlantsEdit from '../pages/PlantsEdit';
 
 //Function that is responsible for logic of displaying the database 
-export default function DataPlantsBase() {
+export default function DataPlantsEdit() {
     const [plants, setPlants] = useState([]);
     const plantsCollectionRef = collection(db, "plants")
 
@@ -19,6 +19,6 @@ export default function DataPlantsBase() {
     }, [])
 
     return (
-        <PlantsBase plants={plants} />
+        <PlantsEdit plants={plants} />
     );
 }

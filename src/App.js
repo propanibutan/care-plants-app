@@ -9,12 +9,12 @@ import Menu from './pages/Menu.js';
 import Home from './pages/Home';
 import SignUp from './components/SignUp.js';
 import LogIn from './components/LogIn.js';
-import PlantsAdd from './pages/PlantsAdd';
 import NotFound from './components/NotFound.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase-config';
-import PlantsBase from './pages/PlantsBase.js';
+import DataPlantsBase from './components/DataPlantsBase.js';
 import DataPlantsAdd from "./components/DataPlantsAdd";
+import DataPlantsEdit from './components/DataPlantsEdit.js';
 
 const App = () => {
   const [signedInUser, setSignedInUser] = useState(null);
@@ -59,7 +59,8 @@ const App = () => {
           } 
           />
           <Route path='/addplant' element={<DataPlantsAdd />} />
-          <Route path='/plantsbase' element={<PlantsBase />} />
+          <Route path='/plantsbase' element={<DataPlantsBase />} />
+          <Route path='/plantsedit' element={<DataPlantsEdit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

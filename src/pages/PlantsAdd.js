@@ -81,7 +81,6 @@ export default function PlantsAdd({
                         autoComplete="off"
                         display='flex'
                         flexDirection="column"
-                        onClick={createPlant}
                         >
                             <Box>
                                 <IconButton color="primary" aria-label="upload picture" component="label">
@@ -155,7 +154,7 @@ export default function PlantsAdd({
                                 setNewNote(event.target.value);
                             }} 
                             />
-                            <Button sx={{alignSelf: "center"}} variant="contained" endIcon={<SendIcon />}>
+                            <Button onClick={createPlant} sx={{alignSelf: "center"}} variant="contained" endIcon={<SendIcon />}>
                                 Add plant
                             </Button>
                         </Box>
