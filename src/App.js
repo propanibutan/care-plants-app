@@ -16,7 +16,6 @@ import { auth } from './firebase-config';
 
 const App = () => {
   const [signedInUser, setSignedInUser] = useState(null);
-  console.log('App1', signedInUser)
 
   onAuthStateChanged(auth, (currentUser) => {
     setSignedInUser(currentUser);

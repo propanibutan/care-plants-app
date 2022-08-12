@@ -1,7 +1,20 @@
 import React from 'react';
 import { ThemeProvider } from '@mui/material';
 import themeHome from '../styles/themeHome';
-import { Container, Grid, Button, Typography, Accordion, AccordionSummary, AccordionDetails, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import { 
+    Container, 
+    Grid, 
+    Button, 
+    Typography, 
+    Accordion, 
+    AccordionSummary, 
+    AccordionDetails, 
+    List, 
+    ListItem, 
+    ListItemAvatar, 
+    ListItemText,
+    Paper
+} from '@mui/material';
 
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import YardRoundedIcon from '@mui/icons-material/YardRounded';
@@ -15,8 +28,15 @@ import logo from '../assets/6a8834e04b1a49a38bf2313df14897b41.png'
 export default function Home(){
     return (
         <ThemeProvider theme={themeHome}>
-            <Container maxWidth='xl' sx={{ backgroundColor: '#c2f2ff', flexGrow: 1 }}>
-                <Grid container spacing={3} alignItems="center"  direction="column" sx={{ minHeight: '100vh', gridTemplateRows: 'repeat(2)' }}>
+            <Container maxWidth='xs' sx={{ flexGrow: 1 }}>
+            <Paper elevation={3} sx={{ backgroundColor: '#c2f2ff', pt: 1}}> 
+                <Grid 
+                container 
+                spacing={3} 
+                alignItems="center"  
+                direction="column" 
+                sx={{ minHeight: '100vh', gridTemplateRows: 'repeat(2)' }}
+                >
                     <Grid item>
                         <img src={logo} alt="Logo with name Plant Care App" style={{ width: '200px' }} /> 
                     </Grid>
@@ -24,15 +44,34 @@ export default function Home(){
                         <img src={girl} alt="Girl planting flower by catalyststuff" style={{ maxWidth: '300px' }} />
                     </Grid>
                     <Grid item>
-                        <Button href="/login" variant="contained" endIcon={<KeyboardDoubleArrowRightIcon sx={{ color: 'white' }} />}>Start now!</Button>
+                        <Button 
+                        href="/login" 
+                        variant="contained" 
+                        endIcon={<KeyboardDoubleArrowRightIcon sx={{ color: 'white' }} />}
+                        >
+                        Start now!
+                        </Button>
                     </Grid>
                     <Grid item>
-                        <Accordion sx={{ maxWidth: '350px'}}>
-                            <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
-                                <Typography variant='subtitle1' sx={{ color:'#390277', fontWeight: '700'}}>About App</Typography>
+                        <Accordion sx={{ maxWidth: '350px', m: 1}}>
+                            <AccordionSummary 
+                            expandIcon={<ExpandMoreIcon />} 
+                            aria-controls="panel1a-content" 
+                            id="panel1a-header">
+                                <Typography 
+                                variant='subtitle1' 
+                                sx={{ color:'#390277', fontWeight: '700'}}
+                                >
+                                About App
+                                </Typography>
                             </AccordionSummary>
-                            <AccordionDetails  >
-                                <Typography variant='body2' sx={{ color:'#390277' }}>My app will help you organize and properly care about your plants. What u can do?</Typography>
+                            <AccordionDetails>
+                                <Typography 
+                                variant='body2' 
+                                sx={{ color:'#390277' }}
+                                >
+                                My app will help you organize and properly care about your plants. What u can do?
+                                </Typography>
                                 <List>
                                     <ListItem>
                                         <ListItemAvatar>
@@ -63,6 +102,7 @@ export default function Home(){
                         </Accordion>
                     </Grid>
                 </Grid>
+                </Paper>
             </Container>
         </ThemeProvider>
     );
