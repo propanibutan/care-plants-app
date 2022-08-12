@@ -144,7 +144,7 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                                             <Tooltip title="Plants Calendar" arrow><img src={iconcalendar} alt="Calendar icon" width="42px" /></Tooltip>
                                         </Fab>
                                         <Fab color="secondary" size="small">
-                                            <Tooltip title="Search new plant" arrow><img src={iconresearch} alt="Search icon" width="42px" /></Tooltip>
+                                            <Tooltip title="Search New Plant" arrow><img src={iconresearch} alt="Search icon" width="42px" /></Tooltip>
                                         </Fab>
                                     </Toolbar>
                                 </AppBar>
