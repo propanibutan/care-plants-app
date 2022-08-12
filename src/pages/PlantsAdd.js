@@ -10,9 +10,14 @@ import {
     Toolbar, 
     Fab, 
     Tooltip,
-    Box
+    Box,
+    TextField,
+    IconButton,
+    Button
 } from '@mui/material';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import SendIcon from '@mui/icons-material/Send';
 import logo from '../assets/6a8834e04b1a49a38bf2313df14897b41.png';
 import iconplantbase from '../assets/plant-pot.png';
 import iconcalendar from '../assets/calendar.png';
@@ -20,8 +25,16 @@ import iconresearch from '../assets/research.png';
 
 //Here is my file for plant add page
 
-export default function PlantsAdd() {
-
+export default function PlantsAdd({
+    createPlant, 
+    setNewName, 
+    setNewLight,
+    setNewWatering,
+    setNewTemp,
+    setNewHumidity,
+    setNewGround,
+    setNewNote 
+}) {
     return  (
         <Container maxWidth='xs' sx={{ flexGrow: 1 }}>
             <Paper elevation={3} sx={{ backgroundColor: '#c2f2ff', pt:1}}>
@@ -58,17 +71,96 @@ export default function PlantsAdd() {
                         Add new plant to your collection
                         </Typography>
                     </Grid>
-
-<Box >
-          {[...new Array(12)]
-            .map(
-              () => `Cras mattis consectetur purus sit amet fermentum.
-Cras justo odio, dapibus ac facilisis in, egestas eget quam.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
-            )
-            .join('\n')}
-        </Box>
+                    <Grid item>
+                        <Box
+                        component="form"
+                        sx={{
+                            '& > :not(style)': { m: 1, width: '25ch' },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                        display='flex'
+                        flexDirection="column"
+                        onClick={createPlant}
+                        >
+                            <Box>
+                                <IconButton color="primary" aria-label="upload picture" component="label">
+                                    <input hidden accept="image/*" type="file" />
+                                    <Tooltip title="Add plant photo" arrow><PhotoCamera /></Tooltip>
+                                </IconButton>
+                            </Box>
+                            <TextField 
+                            required 
+                            id="filled-basic" 
+                            label="Plant name" 
+                            variant="filled" 
+                            onChange={(event) => {
+                                setNewName(event.target.value);
+                            }} 
+                            />
+                            <TextField 
+                            id="filled-basic" 
+                            label="Light" 
+                            variant="filled" 
+                            onChange={(event) => {
+                                setNewLight(event.target.value);
+                            }} 
+                            />
+                            <TextField 
+                            id="filled-basic" 
+                            label="Watering" 
+                            variant="filled" 
+                            onChange={(event) => {
+                                setNewWatering(event.target.value);
+                            }} 
+                            />
+                            <Box display="flex">
+                                <TextField 
+                                id="filled-number" 
+                                label="Temp" 
+                                variant="filled" 
+                                type="number" 
+                                InputLabelProps={{shrink: true}}
+                                sx={{mr: 2}}
+                                onChange={(event) => {
+                                    setNewTemp(event.target.value);
+                                }}
+                                />
+                                <TextField 
+                                id="filled-number" 
+                                label="Humidity" 
+                                variant="filled" 
+                                type="number"  
+                                InputLabelProps={{shrink: true}}
+                                onChange={(event) => {
+                                    setNewHumidity(event.target.value);
+                                }} 
+                                />
+                            </Box>
+                            <TextField 
+                            id="filled-basic" 
+                            label="Type of ground" 
+                            variant="filled" 
+                            onChange={(event) => {
+                                setNewGround(event.target.value);
+                            }} 
+                            />
+                            <TextField
+                            id="filled-multiline-static"
+                            label="Your notes"
+                            multiline
+                            rows={4}
+                            variant="filled"
+                            onChange={(event) => {
+                                setNewNote(event.target.value);
+                            }} 
+                            />
+                            <Button sx={{alignSelf: "center"}} variant="contained" endIcon={<SendIcon />}>
+                                Add plant
+                            </Button>
+                        </Box>
+                        
+                    </Grid>
 
                     <Grid item sx={{mt: 3, width: 'inherit'}}>
                         <CssBaseline />

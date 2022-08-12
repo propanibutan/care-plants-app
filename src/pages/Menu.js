@@ -61,10 +61,10 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
             )
             .join('\n')}
         </Box> */}
- <Grid item>
+ {/* <Grid item>
                                 <Typography variant="body2">User Logged in: </Typography>
                                 console.log({signedInUser?.email})
-                            </Grid>
+                            </Grid> */}
 {/*MIEJSCE NA ŚMIECI */}
                             <Grid item sx={{mt: 3, width: 'inherit'}}>
                                 <CssBaseline />

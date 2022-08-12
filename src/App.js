@@ -13,6 +13,8 @@ import PlantsAdd from './pages/PlantsAdd';
 import NotFound from './components/NotFound.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase-config';
+import PlantsBase from './pages/PlantsBase.js';
+import DataPlantsAdd from "./components/DataPlantsAdd";
 
 const App = () => {
   const [signedInUser, setSignedInUser] = useState(null);
@@ -56,7 +58,8 @@ const App = () => {
             : <Navigate replace to={"/"}/>
           } 
           />
-          <Route path='/addplant' element={<PlantsAdd />} />
+          <Route path='/addplant' element={<DataPlantsAdd />} />
+          <Route path='/plantsbase' element={<PlantsBase />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

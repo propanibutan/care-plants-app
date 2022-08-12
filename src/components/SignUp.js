@@ -5,7 +5,6 @@ import SignUpForm from '../pages/SignUpForm';
 
 //Component which maintains signup form functions
 
-// BRAKUJE POWROTU DO LOGINU JAKBY KTOS PRZYPADKIEM WSZEDŁ NA SIGNUP
 export default function SignUp() {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
@@ -17,7 +16,6 @@ export default function SignUp() {
                 registerEmail, 
                 registerPassword
             );
-            console.log(user);
         } catch (error) {
             console.log(error.message); 
         }
