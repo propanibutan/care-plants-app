@@ -1,5 +1,6 @@
 import React from 'react';
 import AccountMenu from '../utils/AccountMenu';
+import ScrollingTopButton from '../utils/ScrollingTopButton';
 import { ThemeProvider } from '@mui/material';
 import themeMenu from '../styles/themeMenu';
 import { 
@@ -11,15 +12,8 @@ import {
     AppBar, 
     Toolbar, 
     Fab, 
-    useScrollTrigger,
-    Zoom, 
-    createTheme, 
     Tooltip, 
-    styled,
-    Box
 } from '@mui/material';
-
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import logo from '../assets/6a8834e04b1a49a38bf2313df14897b41.png';
 import sadface from '../assets/sadface.png';
 import plusplant from '../assets/plant-tree.png';
@@ -30,54 +24,6 @@ import iconresearch from '../assets/research.png';
 //Here is my file for menu page
 
 export default function Menu({ signedInUser }) {
-
-//Functions for scrolling top button
-        const useStyles = createTheme(theme => ({
-            root: {
-            position: "fixed",
-            bottom: theme.spacing(2),
-            right: theme.spacing(2)
-            }
-        }));
-        
-        function ScrollTop(props) {
-            const { children, window } = props;
-            const classes = useStyles;
-            const trigger = useScrollTrigger({
-            target: window ? window() : undefined,
-            disableHysteresis: true,
-            threshold: 100
-            });
-        
-            const handleClick = (event) => {
-            const anchor = (event.target.ownerDocument || document).querySelector(
-                "#top"
-            );
-        
-            if (anchor) {
-                anchor.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
-            };
-        
-            return (
-            <Zoom in={trigger}>
-                <div onClick={handleClick} className={classes.root}>
-                {children}
-                </div>
-            </Zoom>
-            );
-        }
-
-//Position of scrolling top button
-        const StyledFab = styled(Fab)({
-            position: 'absolute',
-            zIndex: 1,
-            top: -20,
-            left: 0,
-            right: 0,
-            margin: '0 auto',
-        });
-
     return  (
         <ThemeProvider theme={themeMenu}>
             <Container maxWidth='xs' sx={{ flexGrow: 1 }}>
@@ -90,8 +36,8 @@ export default function Menu({ signedInUser }) {
                                 <Typography variant="h5" sx={{ textAlign: 'center', m: 2 }}>Welcome in your garden!</Typography>
                             </Grid>
                             <Grid item display="flex" justifyContent="center">
-                                <Button variant="contained" sx={{m:1}}>Check your plantbase</Button>
-                                <Button variant="contained" sx={{m:1}}>Make a new addnotation in calendar</Button>
+                                <Button variant="contained" size="small" sx={{m:1}}>Check your plantbase</Button>
+                                <Button variant="contained" size="small" sx={{m:1}}>Make a new addnotation in calendar</Button>
                             </Grid>
                             <Grid item display="flex" justifyContent="center" sx={{m:5}}>
                                 <img src={sadface} alt="Crying face" width="100px" />
@@ -105,7 +51,7 @@ export default function Menu({ signedInUser }) {
                                 </Button>
                             </Grid>
 {/*MIEJSCE NA ŚMIECI */}
-<Box >
+{/* <Box >
           {[...new Array(12)]
             .map(
               () => `Cras mattis consectetur purus sit amet fermentum.
@@ -114,10 +60,10 @@ Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
 Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
             )
             .join('\n')}
-        </Box>
+        </Box> */}
  <Grid item>
                                 <Typography variant="body2">User Logged in: </Typography>
-                                {signedInUser?.email}
+                                console.log({signedInUser?.email})
                             </Grid>
 {/*MIEJSCE NA ŚMIECI */}
                             <Grid item sx={{mt: 3, width: 'inherit'}}>
@@ -135,11 +81,7 @@ Praesent commodo cursus magna, vel scelerisque nisl consectetur et.`,
                                         <Fab href="/plantsbase" color="secondary" size="small">
                                             <Tooltip title="Plants Database" arrow><img src={iconplantbase} alt="Database icon" width="42px" /></Tooltip>
                                         </Fab>
-                                        <ScrollTop>
-                                            <StyledFab color="secondary" size="small">
-                                                <KeyboardArrowUpIcon />
-                                            </StyledFab>
-                                        </ScrollTop>
+                                        <ScrollingTopButton />
                                         <Fab href="/calendar" color="secondary" size="small">
                                             <Tooltip title="Plants Calendar" arrow><img src={iconcalendar} alt="Calendar icon" width="42px" /></Tooltip>
                                         </Fab>
