@@ -33,7 +33,7 @@ export default function Menu({ signedInUser }) {
                                 <img src={logo} alt="Logo with name Plant Care App" sx={{ maxWidth: '200px' }} />
                             </Grid>
                             <Grid item>
-                                <Typography variant="h5" sx={{ textAlign: 'center', m: 2 }}>Welcome in your garden!</Typography>
+                                <Typography variant="h6" sx={{ textAlign: 'center', m: 2, fontFamily:'Bungee' }} color="primary">Welcome in your garden!</Typography>
                             </Grid>
                             <Grid item display="flex" justifyContent="center">
                                 <Button variant="contained" size="small" sx={{m:1}}>Check your plantbase</Button>
@@ -43,7 +43,7 @@ export default function Menu({ signedInUser }) {
                                 <img src={sadface} alt="Crying face" width="100px" />
                             </Grid>
                             <Grid item>
-                                <Typography variant="h5" sx={{ textAlign: 'center', m: 1 }}>You haven't any plants!</Typography>
+                                <Typography variant="h7" sx={{ textAlign: 'center', m: 1, fontFamily:'Bungee' }} color="primary">You haven't any plants!</Typography>
                             </Grid>
                             <Grid item display="flex" justifyContent="center">
                                 <Button href="/addplant" variant="contained" size="small">

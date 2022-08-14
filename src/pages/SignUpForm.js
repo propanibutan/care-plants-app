@@ -41,7 +41,7 @@ export default function SignUpForm({ register, setRegisterEmail, setRegisterPass
                         </Box>
                     </Grid>
                     <Grid item>
-                        <Typography variant='h5' sx={{ textAlign: 'center', mb:1 }}>You can sign up:</Typography>
+                        <Typography variant='h6' sx={{ textAlign: 'center', mb:1, fontFamily:'Bungee' }} color="primary">You can sign up:</Typography>
                     </Grid>
                     <Grid item>
                         <Box

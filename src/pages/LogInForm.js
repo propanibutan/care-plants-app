@@ -41,7 +41,7 @@ export default function LogInForm({ login, setLoginEmail, setLoginPassword }){
                         </Box>
                     </Grid>
                     <Grid item>
-                        <Typography variant='h5' sx={{ textAlign: 'center', mb:1 }}>You can login:</Typography>
+                        <Typography variant='h6' sx={{ textAlign: 'center', mb:1, fontFamily:'Bungee' }} color="primary">You can login:</Typography>
                         <Box
                         component="form"
                         sx={{

@@ -65,8 +65,9 @@ export default function PlantsAdd({
                     </Grid>
                     <Grid item>
                         <Typography 
-                        variant="h5" 
-                        sx={{ textAlign: 'center', m: 2 }}
+                        variant="h6" 
+                        sx={{ textAlign: 'center', m: 2, fontFamily:'Bungee' }} 
+                        color="primary"
                         >
                         Add new plant to your collection
                         </Typography>
