@@ -5,16 +5,13 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import Menu from './pages/Menu.js';
+import MenuMain from './pages/MenuMain.js';
 import Home from './pages/Home';
 import SignUp from './components/SignUp.js';
 import LogIn from './components/LogIn.js';
 import NotFound from './components/NotFound.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase-config';
-import DataPlantsBase from './components/DataPlantsBase.js';
-import DataPlantsAdd from "./components/DataPlantsAdd";
-import DataPlantsEdit from './components/DataPlantsEdit.js';
 
 const App = () => {
   const [signedInUser, setSignedInUser] = useState(null);
@@ -54,13 +51,10 @@ const App = () => {
           path='/menu' 
           element={
             signedInUser 
-            ? <Menu signedInUser={signedInUser} />
+            ? <MenuMain signedInUser={signedInUser} />
             : <Navigate replace to={"/"}/>
           } 
           />
-          <Route path='/addplant' element={<DataPlantsAdd />} />
-          <Route path='/plantsbase' element={<DataPlantsBase />} />
-          <Route path='/plantsedit' element={<DataPlantsEdit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

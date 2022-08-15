@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AccountMenu from '../utils/AccountMenu';
 import ScrollingTopButton from '../utils/ScrollingTopButton';
 import { 
     Container, 
-    Typography, 
     Paper, Grid, 
     CssBaseline, 
     AppBar, 
@@ -17,10 +16,20 @@ import logo from '../assets/6a8834e04b1a49a38bf2313df14897b41.png';
 import iconplantbase from '../assets/plant-pot.png';
 import iconcalendar from '../assets/calendar.png';
 import iconresearch from '../assets/research.png';
+import Menu from './Menu';
+import DataPlantsAdd from '../components/DataPlantsAdd';
+import DataPlantsBase from '../components/DataPlantsBase';
+import DataPlantsEdit from '../components/DataPlantsEdit';
 
 //Here is my file for plant add page
 
 export default function MenuMain() {
+    const key = ["menu", "add", "base", "edit"]
+    const [isShown, setIsShown] = useState('menu');
+    
+
+    const handleClickAdd = (event) => setIsShown(key[1]);
+    
 
     return  (
         <Container maxWidth='xs' sx={{ flexGrow: 1 }}>
@@ -33,16 +42,17 @@ export default function MenuMain() {
                 sx={{ minHeight: '100vh' }}
                 >
                     <Grid item display='flex' sx={{ width: 'inherit' }}>
-                        <Fab 
-                        href="/menu" 
+                        {isShown !== "menu" ? <Fab 
+                        onClick={() => setIsShown(key[0])} 
                         size="small" 
                         color="primary" 
                         aria-label="exit" 
                         sx={{m:2}}
+                        
                         >
                             <CloseRoundedIcon />
-                        </Fab>
-                        <Box sx={{display: "flex", ml:3 }}>
+                        </Fab> : null}
+                        <Box flexGrow={2} display="flex" justifyContent="center">
                             <img 
                             src={logo} 
                             alt="Logo with name Plant Care App"
@@ -50,8 +60,11 @@ export default function MenuMain() {
                             />
                         </Box>
                     </Grid>
-                    {/*TU WRZUCISZ POTEM STRONY, KTÓRE BEDA SIE ZMIENIAC PATRZ NA DISPLAY MUI SYSTEM!!! */}
 
+                    {isShown === "menu" && (<Menu handleClickAdd={handleClickAdd} />)}
+                    {isShown === "add" && (<DataPlantsAdd />)}
+                    {isShown === "base" && (<DataPlantsBase />)}
+                    {isShown === "edit" && (<DataPlantsEdit />)}
 
                     <Grid item sx={{mt: 3, width: 'inherit'}}>
                         <CssBaseline />
@@ -65,11 +78,11 @@ export default function MenuMain() {
                              }}
                             >
                                 <AccountMenu />
-                                <Fab href="/plantsbase" color="secondary" size="small">
+                                <Fab color="secondary" size="small" onClick={() => setIsShown(key[2])}>
                                     <Tooltip title="Plants Database" arrow><img src={iconplantbase} alt="Database icon" width="42px" /></Tooltip>
                                 </Fab>
                                 <ScrollingTopButton />
-                                <Fab href="/calendar" color="secondary" size="small">
+                                <Fab color="secondary" size="small">
                                     <Tooltip title="Plants Calendar" arrow><img src={iconcalendar} alt="Calendar icon" width="42px" /></Tooltip>
                                 </Fab>
                                 <Fab color="secondary" size="small">

@@ -18,6 +18,8 @@ export default function DataPlantsBase() {
         getPlants();
     }, [])
 
+    
+
     return (
         <PlantsBase plants={plants} />
     );
