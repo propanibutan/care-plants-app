@@ -16,11 +16,11 @@ export default function LoggedIn({ onLoggedIn }) {
                     email, 
                     password
                 );
-                handleSuccessfulLogIn()
+                handleSuccessfulLogIn();
                 console.log('loggedin:', user);
             } catch (error) {
                 handleFailedLogIn(error.message)
-                console.log('loggedin:' ,error.message); 
+                console.log('loggedin:', error.message); 
             }
     };
 

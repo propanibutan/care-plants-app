@@ -38,7 +38,7 @@ const App = () => {
           path='/login' 
           element={
             signedInUser === null || undefined
-            ?<LogIn onLoggedIn={onAuthStateChanged}/>
+            ?<LogIn onLoggedIn={onAuthStateChanged} />
             :<Navigate replace to={"/menu"} /> 
           } 
           />

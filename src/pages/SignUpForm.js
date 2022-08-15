@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import SignInput from '../utils/SignInput';
+import { signValidation } from '../utils/signValidation';
 import { 
     Container, 
     Grid, 
     Fab, 
     Typography, 
-    Box, 
-    TextField, 
+    Box,  
     Checkbox, 
     FormControlLabel, 
     Button,
@@ -17,7 +18,30 @@ import logo from '../assets/6a8834e04b1a49a38bf2313df14897b41.png'
 
 //Here is my sign up page
 
-export default function SignUpForm({ register, setRegisterEmail, setRegisterPassword }){
+export default function SignUpForm({ generalError, onSubmit }){
+    const [values, setValues] = useState({ email:'', password:'' })
+    const [errorMessages, setErrorMessages] = useState(null); 
+
+    function handleChange(event) {
+        const { name, value } = event.target;
+
+        setValues(prevValues => ({
+            ...prevValues,
+            [name]: value,
+        }));
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        const errorMessages = signValidation(values);
+        setErrorMessages(errorMessages);
+
+        if (errorMessages) { return; }
+
+        if (typeof onSubmit === 'function') {
+            onSubmit(values);
+        }
+    }
 
     return (
         <Container maxWidth='xs' sx={{ flexGrow: 1 }}>
@@ -53,26 +77,27 @@ export default function SignUpForm({ register, setRegisterEmail, setRegisterPass
                         autoComplete="off"
                         display='flex'
                         flexDirection="column"
-                        onClick={register}
+                        onSubmit={handleSubmit}
                         >
-                            <TextField 
-                            id="outlined-basic" 
-                            label="E-mail" 
-                            variant="outlined"
-                            onChange={(event) => {
-                                setRegisterEmail(event.target.value);
-                            }} 
+                            {generalError && ( <Typography variant="subtitle2" sx={{color: 'red'}}>{generalError}</Typography> )}
+                            <SignInput 
+                            label="E-mail"
+                            name="email"
+                            type="text"
+                            value={values.email}
+                            errorMessage={errorMessages?.email}
+                            onChange={handleChange}
                             />
-                            <TextField
-                            id="outlined-basic"
+                            <SignInput 
                             label="Password"
-                            type="password" 
-                            onChange={(event) => {
-                                setRegisterPassword(event.target.value);
-                            }} 
+                            name="password"
+                            type="password"
+                            value={values.password}
+                            errorMessage={errorMessages?.password}
+                            onChange={handleChange}
                             />
                             <FormControlLabel control={<Checkbox />} label="Remember Me" />
-                            <Button variant="contained">Sign up</Button>
+                            <Button variant="contained" type="submit">Sign up</Button>
                         </Box>
                     </Grid>
                 </Grid>

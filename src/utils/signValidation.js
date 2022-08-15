@@ -11,6 +11,10 @@ export function signValidation(values) {
     if (values.password.length <= 7) {
         errorMessages.password = "Must be longer than 7 characters.";
     }
+    
+    if (validator.isAlphanumeric(values.password)) {
+        errorMessages.password = "Must contains at least one special character and letters or numbers.";
+    }
 
     return Object.keys(errorMessages).length > 0
     ? errorMessages

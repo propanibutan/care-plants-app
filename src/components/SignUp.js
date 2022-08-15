@@ -6,26 +6,31 @@ import SignUpForm from '../pages/SignUpForm';
 //Component which maintains signup form functions
 
 export default function SignUp() {
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
-    
-    const register = async () => {
+    const [generalError, setGeneralError] = useState(null);
+
+    const handleSubmit = async ({ email, password }) => {
+        setGeneralError(null);
         try {
             const user = await createUserWithEmailAndPassword(
                 auth, 
-                registerEmail, 
-                registerPassword
+                email, 
+                password
             );
+            console.log('loggedin:', user);
         } catch (error) {
-            console.log(error.message); 
+            handleFailedLogIn(error.message) 
+            console.log('signup:', error.message); 
         }
     };
 
+    function handleFailedLogIn(errorMessage) {
+        setGeneralError(errorMessage);
+    }
+
     return (
         <SignUpForm 
-            register={register}
-            setRegisterEmail={setRegisterEmail}
-            setRegisterPassword={setRegisterPassword}
+        generalError={generalError}
+        onSubmit={handleSubmit}
         />
     );
 }
