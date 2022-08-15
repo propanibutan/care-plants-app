@@ -23,7 +23,7 @@ export default function SignInput({
         variant="outlined"
         name={name}
         type={type}
-        value={value}
+        value={value.trim()}
         onChange={handleChange}
         error={ errorMessage ? true : false }
         helperText={errorMessage}
