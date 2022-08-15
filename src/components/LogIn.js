@@ -5,28 +5,37 @@ import LogInForm from '../pages/LogInForm';
 
 //Component which maintains login form functions
 
-export default function LoggedIn() {
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
+export default function LoggedIn({ onLoggedIn }) {
+    const [generalError, setGeneralError] = useState(null);
 
-    const login = async () => {
+    const handleSubmit = async ({ email, password }) => {
+        setGeneralError(null);
         try {
             const user = await signInWithEmailAndPassword(
-                auth, 
-                loginEmail, 
-                loginPassword
-            );
-            console.log('loggedin:', user);
-        } catch (error) {
-            console.log('loggedin:' ,error.message); 
-        }
+                    auth, 
+                    email, 
+                    password
+                );
+                handleSuccessfulLogIn()
+                console.log('loggedin:', user);
+            } catch (error) {
+                handleFailedLogIn(error.message)
+                console.log('loggedin:' ,error.message); 
+            }
     };
+
+    function handleSuccessfulLogIn(user) {
+        onLoggedIn(user);
+    }
+
+    function handleFailedLogIn(errorMessage) {
+        setGeneralError(errorMessage);
+    }
 
     return (
         <LogInForm 
-            login={login} 
-            setLoginEmail={setLoginEmail}
-            setLoginPassword={setLoginPassword}
+            generalError={generalError}
+            onSubmit={handleSubmit}
         />
     );
 }
