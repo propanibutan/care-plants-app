@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Typography, 
     Grid, 
@@ -10,7 +10,7 @@ import plusplant from '../assets/plant-tree.png';
 
 //Here is my file for menu page
 
-export default function Menu({handleClickAdd}) {
+export default function Menu({handleClickAdd, handleClickBase}) {
 
     return  (
         <>
@@ -18,7 +18,7 @@ export default function Menu({handleClickAdd}) {
                 <Typography variant="h6" sx={{ textAlign: 'center', m: 2, fontFamily:'Bungee' }} color="primary">Welcome in your garden!</Typography>
             </Grid>
             <Grid item display="flex" justifyContent="center">
-                <Button variant="contained" size="small" sx={{m:1}}>Check your plantbase</Button>
+                <Button variant="contained" size="small" sx={{m:1}} onClick={handleClickBase}>Check your plantbase</Button>
                 <Button variant="contained" size="small" sx={{m:1}}>Make a new addnotation in calendar</Button>
              </Grid>
             <Grid item display="flex" justifyContent="center" sx={{m:5}}>

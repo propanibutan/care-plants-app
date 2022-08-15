@@ -27,9 +27,8 @@ export default function MenuMain() {
     const key = ["menu", "add", "base", "edit"]
     const [isShown, setIsShown] = useState('menu');
     
-
     const handleClickAdd = (event) => setIsShown(key[1]);
-    
+    const handleClickBase = (event) => setIsShown(key[2]);
 
     return  (
         <Container maxWidth='xs' sx={{ flexGrow: 1 }}>
@@ -61,7 +60,10 @@ export default function MenuMain() {
                         </Box>
                     </Grid>
 
-                    {isShown === "menu" && (<Menu handleClickAdd={handleClickAdd} />)}
+                    {isShown === "menu" && (<Menu 
+                    handleClickAdd={handleClickAdd}  
+                    handleClickBase={handleClickBase}
+                    />)}
                     {isShown === "add" && (<DataPlantsAdd />)}
                     {isShown === "base" && (<DataPlantsBase />)}
                     {isShown === "edit" && (<DataPlantsEdit />)}
