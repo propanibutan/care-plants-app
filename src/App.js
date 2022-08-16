@@ -9,15 +9,26 @@ import MenuMain from './pages/MenuMain.js';
 import Home from './pages/Home';
 import SignUp from './components/SignUp.js';
 import LogIn from './components/LogIn.js';
+import DataPlantsAdd from './components/DataPlantsAdd';
 import NotFound from './components/NotFound.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase-config';
 
+
+
 const App = () => {
   const [signedInUser, setSignedInUser] = useState(null);
+  const [uidUser, setUidUser] = useState(null);
+
+  const uid = uidUser;
+    console.log(uid)
 
   onAuthStateChanged(auth, (currentUser) => {
     setSignedInUser(currentUser);
+    if (currentUser) {
+      const uid = currentUser.uid;
+      setUidUser(uid);
+    }
   });
 
   return (
@@ -52,6 +63,14 @@ const App = () => {
           element={
             signedInUser 
             ? <MenuMain signedInUser={signedInUser} />
+            : <Navigate replace to={"/"}/>
+          } 
+          />
+          <Route 
+          path='/addplant'
+          element={
+            signedInUser 
+            ? <DataPlantsAdd uid={uid}/>
             : <Navigate replace to={"/"}/>
           } 
           />

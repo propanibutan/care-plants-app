@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
 import { db } from '../firebase-config';
-import { collection, addDoc } from 'firebase/firestore';
+import { arrayUnion, doc, setDoc } from 'firebase/firestore';
 import PlantsAdd from '../pages/PlantsAdd';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase-config.js';
 
 //function which add new plant to base
 
-export default function DataPlantsAdd(){
-    const plantsCollectionRef = collection(db, "plants")
-    
+export default function DataPlantsAdd({ uid }){
+    console.log(uid)
+    const [uidUser, setUidUser] = useState(null);
+    onAuthStateChanged(auth, (currentUser) => { 
+        if (currentUser) {
+            const uid = currentUser.uid;
+            setUidUser(uid);
+          }
+    });
+    console.log(uidUser);
+
+    const usersCollectionRef = doc(db, "users", `${uidUser}`)
+
     const [newName, setNewName] = useState("");
     const [newLight, setNewLight] = useState("");
     const [newWatering, setNewWatering] = useState("");
@@ -17,15 +29,17 @@ export default function DataPlantsAdd(){
     const [newNote, setNewNote] = useState("");
 
     const createPlant = async () => {
-        await addDoc(plantsCollectionRef, { 
-            name: newName,
-            light: newLight,
-            watering: newWatering,
-            temp: newTemp,
-            humidity: newHumidity,
-            ground: newGround,
-            note: newNote
-        });
+        await setDoc(usersCollectionRef, { 
+         plants: arrayUnion( {newName,
+             newLight,
+             newWatering,
+             newTemp,
+             newHumidity,
+             newGround,
+             newNote}),
+        }, 
+        { merge: true }
+        );
     };
 
     return (
