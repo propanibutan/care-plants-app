@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { db } from '../firebase-config';
+import { db, auth } from '../firebase-config';
 import { arrayUnion, doc, setDoc } from 'firebase/firestore';
-import PlantsAdd from '../pages/PlantsAdd';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase-config.js';
+import PlantsForm from '../pages/PlantsForm';
 
 //function which add new plant to base
+const INITIAL_VALUES = { name:'', light:'', water:'', temperature:'', humidity:'', ground:'', note:'' }
 
-export default function DataPlantsAdd({ uid }){
-    console.log(uid)
+export default function DataPlantsAdd({ onSubmit }){
     const [uidUser, setUidUser] = useState(null);
+
     onAuthStateChanged(auth, (currentUser) => { 
         if (currentUser) {
             const uid = currentUser.uid;
@@ -43,7 +43,7 @@ export default function DataPlantsAdd({ uid }){
     };
 
     return (
-        <PlantsAdd 
+        <PlantsForm 
         createPlant={createPlant}
         setNewName={setNewName}
         setNewLight={setNewLight}
