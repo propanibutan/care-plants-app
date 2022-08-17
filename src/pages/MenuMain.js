@@ -18,13 +18,12 @@ import iconcalendar from '../assets/calendar.png';
 import iconresearch from '../assets/research.png';
 import Menu from './Menu';
 import PlantsManager from '../components/PlantsManager';
-// import DataPlantsAdd from '../components/DataPlantsAdd';
-// import DataPlantsBase from '../components/DataPlantsBase';
-// import DataPlantsEdit from '../components/DataPlantsEdit';
+import PlantAdd from '../components/PlantAdd';
+import PlantsBase from './PlantsBase';
 
 //Here is my file for plant add page
 
-export default function MenuMain() {
+export default function MenuMain({addPlants}) {
     const key = ["menu", "add", "base", "edit"]
     const [isShown, setIsShown] = useState('menu');
     
@@ -65,10 +64,11 @@ export default function MenuMain() {
                     handleClickAdd={handleClickAdd}  
                     handleClickBase={handleClickBase}
                     />)}
-                     {isShown === "base" && (<PlantsManager />)}
-                    {/* {isShown === "add" && (<DataPlantsAdd />)}
-                    {isShown === "base" && (<DataPlantsBase />)}
-                    {isShown === "edit" && (<DataPlantsEdit />)} */}
+                    {isShown === "base" && (<PlantsBase 
+                    handleClickAdd={handleClickAdd}
+                    />)}
+                    {isShown === "add" && (<PlantAdd onSubmit={addPlants}/>)}
+                    {/* {isShown === "edit" && (< />)} */}
 
                     <Grid item sx={{mt: 3, width: 'inherit'}}>
                         <CssBaseline />

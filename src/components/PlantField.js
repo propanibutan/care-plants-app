@@ -18,7 +18,7 @@ export default function PlantField({ label, name, type, value, errorMessage, onC
             type={type}
             value={value}
             onChange={handleChange}
-            error={ errorMessage ? true : false }
+            error={errorMessage ? true : false}
             helperText={errorMessage}
             />
         </label>

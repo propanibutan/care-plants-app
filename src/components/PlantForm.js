@@ -101,22 +101,24 @@ export default function PlantForm({ plant, submitLabel, onSubmit }) {
                 errorMessage={errorMessages?.water}
                 onChange={handleChange}
                 />
-                <PlantField 
-                label="Temperature"
-                name="temperature"
-                type="text"
-                value={values.temperature}
-                errorMessage={errorMessages?.temperature}
-                onChange={handleChange}
-                />
-                <PlantField 
-                label="Humidity"
-                name="humidity"
-                type="text"
-                value={values.humidity}
-                errorMessage={errorMessages?.humidity}
-                onChange={handleChange}
-                />
+                <Box display="flex" gap={0.5}>
+                    <PlantField 
+                    label="Temp"
+                    name="temperature"
+                    type="number"
+                    value={values.temperature}
+                    errorMessage={errorMessages?.temperature}
+                    onChange={handleChange}
+                    />
+                    <PlantField 
+                    label="Humidity"
+                    name="humidity"
+                    type="number"
+                    value={values.humidity}
+                    errorMessage={errorMessages?.humidity}
+                    onChange={handleChange}
+                    />
+                </Box>
                 <PlantField 
                 label="Ground"
                 name="ground"

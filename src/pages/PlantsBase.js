@@ -13,6 +13,22 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 //Here is my file for plant add page
 export default function PlantsBase({plants}) {
+
+//     <div>
+//     <ul>
+//         {plants.map(plant => (
+//             <li key={plant.id}>
+//                 <Plant plant={plant}  /> 
+//              </li>
+//         ))}
+//     </ul>
+//     <AddPlantButton handleClickAdd={handleClickAdd} />
+//     {isShown === true && (<div>
+//         <PlantAdd onSubmit={addPlants}/>
+//     </div>)}
+// </div>
+
+
     return  (
         <> 
                     <Grid item>

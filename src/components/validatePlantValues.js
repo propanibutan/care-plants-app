@@ -1,3 +1,5 @@
+import validator from "validator";
+
 function isBlank(text) {
     return text.trim().length === 0;
 }
@@ -10,7 +12,7 @@ export default function validatePlantValues(values) {
     const errorMessages = {}
 
     if (isBlank(values.name)) {
-        errorMessages.name = 'please input value';
+        errorMessages.name = 'please input name of plant';
       }
     
       if (isBlank(values.light)) {
@@ -21,20 +23,16 @@ export default function validatePlantValues(values) {
         errorMessages.water = 'please input value';
       }
     
-      if (!isNumber(values.temperature)) {
-        errorMessages.temperature = 'please input number';
+      if (!validator.isInt(values.temperature)) {
+        errorMessages.temperature = 'please input an integer number';
       }
 
-      if (!isNumber(values.humidity)) {
-        errorMessages.humidity = 'please input number';
+      if (!validator.isInt(values.humidity)) {
+        errorMessages.humidity = 'please input an integer number';
       }
 
       if (isBlank(values.ground)) {
         errorMessages.ground = 'please input value';
-      }
-
-      if (isBlank(values.note)) {
-        errorMessages.note = 'please input value';
       }
     
       return Object.keys(errorMessages).length > 0

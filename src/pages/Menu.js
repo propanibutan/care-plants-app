@@ -7,6 +7,7 @@ import {
 } from '@mui/material';
 import sadface from '../assets/sadface.png';
 import plusplant from '../assets/plant-tree.png';
+import AddPlantButton from '../utils/AddPlantButton';
 
 //Here is my file for menu page
 
@@ -27,11 +28,7 @@ export default function Menu({handleClickAdd, handleClickBase}) {
             <Grid item>
                 <Typography variant="h7" sx={{ textAlign: 'center', m: 1, fontFamily:'Bungee' }} color="primary">You haven't any plants!</Typography>
             </Grid>
-            <Grid item display="flex" justifyContent="center">
-                <Button onClick={handleClickAdd} variant="contained" size="small" sx={{m: 2}}>
-                    <Tooltip title="Add plant" arrow><img src={plusplant} alt="Button with adding plant to base" width="42px" /></Tooltip>
-                </Button>
-            </Grid>
+            <AddPlantButton handleClickAdd={handleClickAdd}/>
         </>   
     );
 }

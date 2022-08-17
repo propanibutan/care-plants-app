@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-// import { db } from '../firebase-config';
-import { uid } from "uid";
-import { set, ref } from 'firebase/database';
 import { db, auth } from '../firebase-config';
 import { arrayUnion, doc, setDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
-import Plant from './Plant';
-import PlantAdd from './PlantAdd';
+import MenuMain from '../pages/MenuMain';
 
 export default function PlantsManager() {
     const [plants, setPlants] = useState("");
     const [uidUser, setUidUser] = useState(null);
 
+    const usersCollectionRef = doc(db, "users", `${uidUser}`)
+        console.log('plantsState', plants)
+    
     onAuthStateChanged(auth, (currentUser) => { 
         if (currentUser) {
             const uid = currentUser.uid;
@@ -20,9 +19,7 @@ export default function PlantsManager() {
     });
     console.log(uidUser);
 
-    const usersCollectionRef = doc(db, "users", `${uidUser}`)
-    console.log('plantsState', plants)
-    console.log(ref)
+    
 
     // useEffect(() => {
     //     onValue(ref(db), snapshot => {
@@ -66,20 +63,22 @@ export default function PlantsManager() {
     //     .then(() => setPlants(plants => plants.filter(plant => plant.id !== id)));
     // }
 
-    if (!plants) return <PlantAdd onSubmit={addPlants}/>;
+    // if (!plants) return;
 
     return (
-        <div>
-            {/* <ul>
-                {plants.map(plant => (
-                    <li key={plant.id}>
-                        <Plant plant={plant}  /> onUpdate={updatePlant} onDelete={deletePlant} */}
-                    {/* </li>
-                ))}
-            </ul> */}
-            <div>
-                <PlantAdd onSubmit={addPlants}/>
-            </div>
-        </div>
+        <MenuMain addPlants={addPlants} />
+        // <div>
+        //     <ul>
+        //         {plants.map(plant => (
+        //             <li key={plant.id}>
+        //                 <Plant plant={plant} onUpdate={updatePlant} onDelete={deletePlant}  /> 
+        //              </li>
+        //         ))}
+        //     </ul>
+        //     <AddPlantButton handleClickAdd={handleClickAdd} />
+        //     {isShown === true && (<div>
+        //         <PlantAdd onSubmit={addPlants}/>
+        //     </div>)}
+        // </div>
     );
 }

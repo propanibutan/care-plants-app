@@ -5,7 +5,6 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
-import MenuMain from './pages/MenuMain.js';
 import Home from './pages/Home';
 import SignUp from './components/SignUp.js';
 import LogIn from './components/LogIn.js';
@@ -13,6 +12,7 @@ import LogIn from './components/LogIn.js';
 import NotFound from './components/NotFound.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase-config';
+import PlantsManager from './components/PlantsManager.js';
 
 
 
@@ -54,7 +54,7 @@ const App = () => {
           path='/menu' 
           element={
             signedInUser 
-            ? <MenuMain signedInUser={signedInUser} />
+            ? <PlantsManager signedInUser={signedInUser} />
             : <Navigate replace to={"/"}/>
           } 
           />
