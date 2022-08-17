@@ -9,7 +9,7 @@ import MenuMain from './pages/MenuMain.js';
 import Home from './pages/Home';
 import SignUp from './components/SignUp.js';
 import LogIn from './components/LogIn.js';
-import DataPlantsAdd from './components/DataPlantsAdd';
+// import DataPlantsAdd from './components/DataPlantsAdd';
 import NotFound from './components/NotFound.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase-config';
@@ -58,13 +58,13 @@ const App = () => {
             : <Navigate replace to={"/"}/>
           } 
           />
-          <Route 
+          {/* <Route 
           element={
             signedInUser 
             ? <DataPlantsAdd />
             : <Navigate replace to={"/"}/>
           } 
-          />
+          /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

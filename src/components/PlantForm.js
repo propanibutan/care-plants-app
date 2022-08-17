@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import PlantField from './PlantField';
 import validate from './validatePlantValues';
+import {
+    Grid,
+    Box,
+    IconButton,
+    Tooltip,
+    Button
+} from '@mui/material';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import SendIcon from '@mui/icons-material/Send';
 
 function mapPlantToFormValues(plant) {
     return {
@@ -50,64 +59,84 @@ export default function PlantForm({ plant, submitLabel, onSubmit }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <PlantField 
-            label="Name"
-            name="name"
-            type="text"
-            value={values.name}
-            errorMessage={errorMessages?.name}
-            onChange={handleChange}
-            />
-            <PlantField 
-            label="Light"
-            name="light"
-            type="text"
-            value={values.light}
-            errorMessage={errorMessages?.light}
-            onChange={handleChange}
-            />
-            <PlantField 
-            label="Watering"
-            name="water"
-            type="text"
-            value={values.water}
-            errorMessage={errorMessages?.water}
-            onChange={handleChange}
-            />
-            <PlantField 
-            label="Temperature"
-            name="temperature"
-            type="text"
-            value={values.temperature}
-            errorMessage={errorMessages?.temperature}
-            onChange={handleChange}
-            />
-            <PlantField 
-            label="Humidity"
-            name="humidity"
-            type="text"
-            value={values.humidity}
-            errorMessage={errorMessages?.humidity}
-            onChange={handleChange}
-            />
-            <PlantField 
-            label="Ground"
-            name="ground"
-            type="text"
-            value={values.ground}
-            errorMessage={errorMessages?.ground}
-            onChange={handleChange}
-            />
-            <PlantField 
-            label="Notes"
-            name="note"
-            type="text"
-            value={values.note}
-            errorMessage={errorMessages?.note}
-            onChange={handleChange}
-            />
-            <input type="submit" value={submitLabel} />
-        </form>
+        <Grid item>
+            <Box
+            component="form"
+            sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+            display='flex'
+            flexDirection="column"
+            onSubmit={handleSubmit}
+            >
+                <Box>
+                    <IconButton color="primary" aria-label="upload picture" component="label">
+                        <input hidden accept="image/*" type="file" />
+                        <Tooltip title="Add plant photo" arrow><PhotoCamera /></Tooltip>
+                    </IconButton>
+                </Box>
+                <PlantField 
+                label="Name"
+                name="name"
+                type="text"
+                value={values.name}
+                errorMessage={errorMessages?.name}
+                onChange={handleChange}
+                />
+                <PlantField 
+                label="Light"
+                name="light"
+                type="text"
+                value={values.light}
+                errorMessage={errorMessages?.light}
+                onChange={handleChange}
+                />
+                <PlantField 
+                label="Watering"
+                name="water"
+                type="text"
+                value={values.water}
+                errorMessage={errorMessages?.water}
+                onChange={handleChange}
+                />
+                <PlantField 
+                label="Temperature"
+                name="temperature"
+                type="text"
+                value={values.temperature}
+                errorMessage={errorMessages?.temperature}
+                onChange={handleChange}
+                />
+                <PlantField 
+                label="Humidity"
+                name="humidity"
+                type="text"
+                value={values.humidity}
+                errorMessage={errorMessages?.humidity}
+                onChange={handleChange}
+                />
+                <PlantField 
+                label="Ground"
+                name="ground"
+                type="text"
+                value={values.ground}
+                errorMessage={errorMessages?.ground}
+                onChange={handleChange}
+                />
+                <PlantField 
+                label="Notes"
+                name="note"
+                type="text"
+                value={values.note}
+                errorMessage={errorMessages?.note}
+                onChange={handleChange}
+                />
+                <Button type="submit" value={submitLabel} sx={{alignSelf: "center"}} variant="contained" endIcon={<SendIcon />}>
+                    Add plant
+                </Button>
+            </Box>
+        </Grid>
     );
 }

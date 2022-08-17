@@ -17,9 +17,10 @@ import iconplantbase from '../assets/plant-pot.png';
 import iconcalendar from '../assets/calendar.png';
 import iconresearch from '../assets/research.png';
 import Menu from './Menu';
-import DataPlantsAdd from '../components/DataPlantsAdd';
-import DataPlantsBase from '../components/DataPlantsBase';
-import DataPlantsEdit from '../components/DataPlantsEdit';
+import PlantsManager from '../components/PlantsManager';
+// import DataPlantsAdd from '../components/DataPlantsAdd';
+// import DataPlantsBase from '../components/DataPlantsBase';
+// import DataPlantsEdit from '../components/DataPlantsEdit';
 
 //Here is my file for plant add page
 
@@ -64,9 +65,10 @@ export default function MenuMain() {
                     handleClickAdd={handleClickAdd}  
                     handleClickBase={handleClickBase}
                     />)}
-                    {isShown === "add" && (<DataPlantsAdd />)}
+                     {isShown === "base" && (<PlantsManager />)}
+                    {/* {isShown === "add" && (<DataPlantsAdd />)}
                     {isShown === "base" && (<DataPlantsBase />)}
-                    {isShown === "edit" && (<DataPlantsEdit />)}
+                    {isShown === "edit" && (<DataPlantsEdit />)} */}
 
                     <Grid item sx={{mt: 3, width: 'inherit'}}>
                         <CssBaseline />
