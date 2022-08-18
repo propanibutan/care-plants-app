@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Navigate,
   Route,
   Routes,
@@ -30,7 +30,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route 
-          path='/home'
+          path='/'
           element={
             !signedInUser
             ?<Home />
@@ -58,7 +58,7 @@ const App = () => {
           element={
             signedInUser 
             ? <PlantsManager signedInUser={signedInUser} uidUser={uidUser}/>
-            : <Navigate replace to={"/home"}/>
+            : <Navigate replace to={"/"}/>
           } 
           />
           <Route path="*" element={<NotFound />} />
