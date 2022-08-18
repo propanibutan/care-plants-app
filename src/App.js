@@ -30,7 +30,7 @@ const App = () => {
       <Router>
         <Routes>
           <Route 
-          path='/' 
+          path='#'
           element={
             !signedInUser
             ?<Home />
@@ -38,7 +38,7 @@ const App = () => {
           } 
           />
           <Route 
-          path='/login' 
+          path='#login'
           element={
             signedInUser === null || undefined
             ?<LogIn onLoggedIn={onAuthStateChanged} />
@@ -46,7 +46,7 @@ const App = () => {
           } 
           />
           <Route 
-          path='/signup' 
+          path='#signup'
           element={
             signedInUser === null || undefined
             ?<SignUp />
@@ -54,7 +54,7 @@ const App = () => {
           } 
           />
           <Route 
-          path='/menu' 
+          path='#menu'
           element={
             signedInUser 
             ? <PlantsManager signedInUser={signedInUser} uidUser={uidUser}/>
