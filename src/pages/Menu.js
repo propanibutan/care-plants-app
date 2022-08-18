@@ -16,9 +16,7 @@ export default function Menu({handleClickAdd, handleClickBase, plants}) {
 
     useEffect(() => {
         const showBase = () => {
-            plants.length > 0 
-            ? setIsShown(true)
-            : false
+            if(plants.length > 0) {setIsShown(true)}
         }
 
         showBase();
