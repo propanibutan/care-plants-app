@@ -1,3 +1,7 @@
 import React from 'react';
 
-export default function NotFound() { return <h1>404,Nothing is here</h1> }
+//Component for not found page
+
+export default function NotFound() { 
+    return <h1>404, nothing is here</h1>;
+}
