@@ -30,35 +30,35 @@ const App = () => {
       <Router>
         <Routes>
           <Route 
-          path='home'
+          path='/home'
           element={
             !signedInUser
             ?<Home />
-            :<Navigate replace to={"menu"} />
+            :<Navigate replace to={"/menu"} />
           } 
           />
           <Route 
-          path='login'
+          path='/login'
           element={
             signedInUser === null || undefined
             ?<LogIn onLoggedIn={onAuthStateChanged} />
-            :<Navigate replace to={"menu"} />
+            :<Navigate replace to={"/menu"} />
           } 
           />
           <Route 
-          path='signup'
+          path='/signup'
           element={
             signedInUser === null || undefined
             ?<SignUp />
-            :<Navigate replace to={"menu"} />
-          } 
+            :<Navigate replace to={"/menu"} />
+          }
           />
-          <Route 
-          path='menu'
+          <Route
+          path='/menu'
           element={
             signedInUser 
             ? <PlantsManager signedInUser={signedInUser} uidUser={uidUser}/>
-            : <Navigate replace to={"home"}/>
+            : <Navigate replace to={"/home"}/>
           } 
           />
           <Route path="*" element={<NotFound />} />
