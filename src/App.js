@@ -34,7 +34,7 @@ const App = () => {
           element={
             !signedInUser
             ?<Home />
-            :<Navigate replace to={"/menu"} />
+            :<Navigate replace to={"#menu"} />
           } 
           />
           <Route 
@@ -42,7 +42,7 @@ const App = () => {
           element={
             signedInUser === null || undefined
             ?<LogIn onLoggedIn={onAuthStateChanged} />
-            :<Navigate replace to={"/menu"} /> 
+            :<Navigate replace to={"#menu"} />
           } 
           />
           <Route 
@@ -50,7 +50,7 @@ const App = () => {
           element={
             signedInUser === null || undefined
             ?<SignUp />
-            :<Navigate replace to={"/menu"} /> 
+            :<Navigate replace to={"#menu"} />
           } 
           />
           <Route 
@@ -58,10 +58,10 @@ const App = () => {
           element={
             signedInUser 
             ? <PlantsManager signedInUser={signedInUser} uidUser={uidUser}/>
-            : <Navigate replace to={"/"}/>
+            : <Navigate replace to={"#"}/>
           } 
           />
-          <Route path="*" element={<NotFound />} />
+          <Route path="#*" element={<NotFound />} />
         </Routes>
       </Router>
   );
