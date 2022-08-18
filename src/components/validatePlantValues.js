@@ -4,9 +4,9 @@ function isBlank(text) {
     return text.trim().length === 0;
 }
 
-function isNumber(text) {
-    return /^\d+$/.test(text);
-}
+// function isNumber(text) {
+//     return /^\d+$/.test(text);
+// }
 
 export default function validatePlantValues(values) {
     const errorMessages = {}

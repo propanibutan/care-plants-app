@@ -19,8 +19,6 @@ export default function Menu({handleClickAdd, handleClickBase, plants}) {
         setIsShown(true);
     }
     }, [])
-    
-   
 
     return  (
         <>
