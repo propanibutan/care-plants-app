@@ -8,13 +8,10 @@ import {
 import Home from './pages/Home';
 import SignUp from './components/SignUp.js';
 import LogIn from './components/LogIn.js';
-// import DataPlantsAdd from './components/DataPlantsAdd';
 import NotFound from './components/NotFound.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase-config';
 import PlantsManager from './components/PlantsManager.js';
-
-
 
 const App = () => {
   const [signedInUser, setSignedInUser] = useState(null);
@@ -64,13 +61,6 @@ const App = () => {
             : <Navigate replace to={"/"}/>
           } 
           />
-          {/* <Route 
-          element={
-            signedInUser 
-            ? <DataPlantsAdd />
-            : <Navigate replace to={"/"}/>
-          } 
-          /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

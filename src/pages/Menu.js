@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Typography, 
     Grid, 
@@ -13,17 +13,16 @@ import PlantsBaseMainList from './PlantsBaseMainList';
 export default function Menu({handleClickAdd, handleClickBase, plants}) {
     const [isShown, setIsShown] = useState(false);
     console.log('plants Menu', plants, isShown)
-   
 
-    const fetchBusinesses = useCallback(() => {
-        if (plants.length > 0 ){
-        setIsShown(true);
-        }
-    }, [])
-    
     useEffect(() => {
-        fetchBusinesses()
-      }, [fetchBusinesses])
+        const showBase = () => {
+            plants.length > 0 
+            ? setIsShown(true)
+            : false
+        }
+        
+        showBase();
+    }, [])
 
     return  (
         <>
