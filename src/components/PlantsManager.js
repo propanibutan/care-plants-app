@@ -17,7 +17,7 @@ export default function PlantsManager({uidUser}) {
         const array = Object.keys(takeArray).map(function(key) {return takeArray[key]})
         const arraInside = array[0];
 
-        setPlants(arraInside);
+       return setPlants(arraInside);
         }
        }
     getPlants();

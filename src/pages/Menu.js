@@ -13,12 +13,11 @@ import PlantsBaseMainList from './PlantsBaseMainList';
 export default function Menu({handleClickAdd, handleClickBase, plants}) {
     const [isShown, setIsShown] = useState(false);
     console.log('plants Menu', plants, isShown)
-
-    let plants;
+   
     useEffect(() => {
-        function showBase(){
+        const showBase = () => {
        if (plants.length > 0 ){
-        setIsShown(true);
+       return setIsShown(true);
     }}
     showBase();
     }, [])
