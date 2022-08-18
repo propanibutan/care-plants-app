@@ -14,13 +14,16 @@ export default function Menu({handleClickAdd, handleClickBase, plants}) {
     const [isShown, setIsShown] = useState(false);
     console.log('plants Menu', plants, isShown)
    
-    useEffect(() => {
-        const showBase = () => {
-       if (plants.length > 0 ){
-       return setIsShown(true);
-    }}
-    showBase();
+
+    const fetchBusinesses = useCallback(() => {
+        if (plants.length > 0 ){
+        setIsShown(true);
+        }
     }, [])
+    
+    useEffect(() => {
+        fetchBusinesses()
+      }, [fetchBusinesses])
 
     return  (
         <>
