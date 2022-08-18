@@ -21,7 +21,7 @@ export default function PlantsManager({uidUser}) {
         }
        }
     getPlants();
-    }, [])
+    }, [uidUser])
     console.log('uid', uidUser);
 
     //adding plants
