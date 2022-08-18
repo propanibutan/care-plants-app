@@ -17,7 +17,6 @@ import iconplantbase from '../assets/plant-pot.png';
 import iconcalendar from '../assets/calendar.png';
 import iconresearch from '../assets/research.png';
 import Menu from './Menu';
-import PlantsManager from '../components/PlantsManager';
 import PlantAdd from '../components/PlantAdd';
 import PlantsBase from './PlantsBase';
 

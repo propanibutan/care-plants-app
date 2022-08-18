@@ -25,7 +25,7 @@ export default function SignInput({
         type={type}
         value={value.trim()}
         onChange={handleChange}
-        error={ errorMessage ? true : false }
+        error={ !!errorMessage }
         helperText={errorMessage}
         />
     );

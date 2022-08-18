@@ -20,7 +20,6 @@ export default function PlantsManager({uidUser}) {
         setPlants(arraInside);
         }
        }
-
     getPlants();
     }, [])
     console.log('uid', uidUser);
