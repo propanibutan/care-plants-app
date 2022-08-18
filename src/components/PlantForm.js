@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PlantField from './PlantField';
 import validate from './validatePlantValues';
+import { v4 as uuid} from 'uuid';
 import {
     Grid,
     Box,
@@ -13,6 +14,7 @@ import SendIcon from '@mui/icons-material/Send';
 
 function mapPlantToFormValues(plant) {
     return {
+        id: uuid(),
         name: plant.name,
         light: plant.light,
         water: plant.water,
@@ -25,6 +27,7 @@ function mapPlantToFormValues(plant) {
 
 function mapFormValuesToPlant(values) {
     return {
+        id: values.id,
         name: values.name,
         light: values.light,
         water: values.water,

@@ -18,9 +18,15 @@ import PlantsManager from './components/PlantsManager.js';
 
 const App = () => {
   const [signedInUser, setSignedInUser] = useState(null);
+  const [uidUser, setUidUser] = useState(null);
 
   onAuthStateChanged(auth, (currentUser) => {
     setSignedInUser(currentUser);
+
+    if (currentUser) {
+        const uid = currentUser.uid;
+        setUidUser(uid);
+      }
   });
 
   return (
@@ -54,7 +60,7 @@ const App = () => {
           path='/menu' 
           element={
             signedInUser 
-            ? <PlantsManager signedInUser={signedInUser} />
+            ? <PlantsManager signedInUser={signedInUser} uidUser={uidUser}/>
             : <Navigate replace to={"/"}/>
           } 
           />

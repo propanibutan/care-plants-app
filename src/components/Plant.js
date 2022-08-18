@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import  { Box, IconButton } from '@mui/material';
+import EditRoundedIcon from '@mui/icons-material/EditRounded';
+import DeleteIcon from '@mui/icons-material/Delete';
 import PlantEdit from './PlantEdit';
 import PlantView from './PlantView';
 
@@ -31,8 +34,14 @@ export default function Plant({ plant, onUpdate, onDelete }) {
             : (
                 <>
                     <div><PlantView plant={plant} /></div>
-                    <button onClick={handleEditButtonClick}>Edit</button>
-                    <button onClick={handleDeleteButtonClick}>Delete</button>
+                    <Box>
+                        <IconButton color="secondary" aria-label="edit" onClick={handleEditButtonClick}>
+                            <EditRoundedIcon />
+                        </IconButton>
+                        <IconButton edge="end" aria-label="delete" onClick={handleDeleteButtonClick}>
+                            <DeleteIcon />
+                        </IconButton>
+                    </Box> 
                 </>
             )
             }

@@ -7,10 +7,9 @@ import {
 
 //Here is my file for plant add page
 
-const INITIAL_VALUES = { name:'', light:'', water:'', temperature:'', humidity:'', ground:'', note:'' }
+const INITIAL_VALUES = { id:'', name:'', light:'', water:'', temperature:'', humidity:'', ground:'', note:'' }
 
 export default function AddPlant({ onSubmit }) {
-    console.log('plantAdd', INITIAL_VALUES)
     return(
         <>
             <Grid item>

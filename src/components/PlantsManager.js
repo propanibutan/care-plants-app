@@ -1,37 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import { db, auth } from '../firebase-config';
-import { arrayUnion, doc, setDoc } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
+import { db } from '../firebase-config';
+import { arrayUnion, doc, setDoc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import MenuMain from '../pages/MenuMain';
 
-export default function PlantsManager() {
-    const [plants, setPlants] = useState("");
-    const [uidUser, setUidUser] = useState(null);
+export default function PlantsManager({uidUser}) {
+    const [plants, setPlants] = useState([]);
+    const usersCollectionRef = doc(db, `users`, `${uidUser}`);
+   
+    // getting plants data
+    useEffect(() => {
+        const getPlants = async () => {
+        const data = await getDoc(usersCollectionRef);
+        
+        if (uidUser !== null) {
+        const takeArray = data.data();
+        const array = Object.keys(takeArray).map(function(key) {return takeArray[key]})
+        const arraInside = array[0];
 
-    const usersCollectionRef = doc(db, "users", `${uidUser}`)
-        console.log('plantsState', plants)
-    
-    onAuthStateChanged(auth, (currentUser) => { 
-        if (currentUser) {
-            const uid = currentUser.uid;
-            setUidUser(uid);
-          }
-    });
-    console.log(uidUser);
+        setPlants(arraInside);
+        }
+       }
 
-    
+    getPlants();
+    }, [])
+    console.log('uid', uidUser);
 
-    // useEffect(() => {
-    //     onValue(ref(db), snapshot => {
-    //         const data = snapshot.val();
-    //         if(data !== null){
-    //             Object.values(data).map(plant => {
-    //                 setPlants(plants => [...plants, plant])
-    //             })
-    //         }
-    //     })
-    // }, [])
-    
+    //adding plants
     const addPlants = async (plant) => {
         await setDoc(usersCollectionRef, { 
          plants: arrayUnion(plant),
@@ -41,44 +35,21 @@ export default function PlantsManager() {
         setPlants(plants => [...plants, plant]);
     };
     
-    // const addPlants = (plant) => {
-    //     const uuid = uid();
-    //     set(ref(db, `/${uuid}`), {
-    //         plants: plants,
-    //         uuid: uuid
-    //     });
-    //     console.log("uuid", uuid, 'plantsWirte', plants)
-    //     setPlants(plants => [...plants, plant]);
-    //     console.log("adplant", plants, plant)
-    // }
+    //edit plant
+    const updatePlant = async (id, plant) => {
+        const plantDoc = doc(db, `users`, `${uidUser}`, `plants`)
+        await updateDoc(plantDoc, plant)
+        .then(updatedPlant => setPlants(plants => plants.map( plant => plant.id === id ? updatedPlant : plant)));
+    }
 
-    
-    // function updatePlant(id, plant) {
-    //     API.updatePlant(id, plant)
-    //     .then(updatedPlant => setPlants(plants => plants.map( plant => plant.id === id ? updatedPlant : plant)));
-    // }
-
-    // function deletePlant(id) {
-    //     API.deletePlant(id)
-    //     .then(() => setPlants(plants => plants.filter(plant => plant.id !== id)));
-    // }
-
-    // if (!plants) return;
+    //delete plant
+    const deletePlant = async (id) => {
+        const plantDoc = doc(db, `users`, `${uidUser}`, `plants`, id);
+        await deleteDoc(plantDoc)
+        .then(() => setPlants(plants => plants.filter(plant => plant.id !== id)));
+    }
 
     return (
-        <MenuMain addPlants={addPlants} />
-        // <div>
-        //     <ul>
-        //         {plants.map(plant => (
-        //             <li key={plant.id}>
-        //                 <Plant plant={plant} onUpdate={updatePlant} onDelete={deletePlant}  /> 
-        //              </li>
-        //         ))}
-        //     </ul>
-        //     <AddPlantButton handleClickAdd={handleClickAdd} />
-        //     {isShown === true && (<div>
-        //         <PlantAdd onSubmit={addPlants}/>
-        //     </div>)}
-        // </div>
+        <MenuMain addPlants={addPlants} plants={plants} updatePlant={updatePlant} deletePlant={deletePlant}/>
     );
 }

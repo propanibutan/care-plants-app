@@ -23,8 +23,8 @@ import PlantsBase from './PlantsBase';
 
 //Here is my file for plant add page
 
-export default function MenuMain({addPlants}) {
-    const key = ["menu", "add", "base", "edit"]
+export default function MenuMain({addPlants, updatePlant, deletePlant, plants}) {
+    const key = ["menu", "add", "base"]
     const [isShown, setIsShown] = useState('menu');
     
     const handleClickAdd = (event) => setIsShown(key[1]);
@@ -63,12 +63,15 @@ export default function MenuMain({addPlants}) {
                     {isShown === "menu" && (<Menu 
                     handleClickAdd={handleClickAdd}  
                     handleClickBase={handleClickBase}
+                    plants={plants}
                     />)}
                     {isShown === "base" && (<PlantsBase 
                     handleClickAdd={handleClickAdd}
+                    updatePlant={updatePlant}
+                    deletePlant={deletePlant}
+                    plants={plants}
                     />)}
                     {isShown === "add" && (<PlantAdd onSubmit={addPlants}/>)}
-                    {/* {isShown === "edit" && (< />)} */}
 
                     <Grid item sx={{mt: 3, width: 'inherit'}}>
                         <CssBaseline />

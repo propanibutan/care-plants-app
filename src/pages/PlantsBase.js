@@ -1,33 +1,24 @@
 import React, { useState } from 'react';
 import { 
-    Paper, 
+    List,
+    ListItemButton,
+    ListItemAvatar,
     Grid, 
-    Typography,
-    IconButton,
-    Box
+    Typography
 } from '@mui/material';
+import FolderIcon from '@mui/icons-material/Folder';
+import AddPlantButton from '../utils/AddPlantButton';
+import Plant from '../components/Plant';
 
-import EditRoundedIcon from '@mui/icons-material/EditRounded';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 
 //Here is my file for plant add page
-export default function PlantsBase({plants}) {
+export default function PlantsBase({plants, handleClickAdd, updatePlant, deletePlant}) {
+    const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-//     <div>
-//     <ul>
-//         {plants.map(plant => (
-//             <li key={plant.id}>
-//                 <Plant plant={plant}  /> 
-//              </li>
-//         ))}
-//     </ul>
-//     <AddPlantButton handleClickAdd={handleClickAdd} />
-//     {isShown === true && (<div>
-//         <PlantAdd onSubmit={addPlants}/>
-//     </div>)}
-// </div>
-
+    const handleListItemClick = (event, index) => {
+      setSelectedIndex(index);
+    };
 
     return  (
         <> 
@@ -41,25 +32,22 @@ export default function PlantsBase({plants}) {
                         </Typography>
                     </Grid>
                     <Grid item display="flex" flexWrap="wrap" sx={{m: 2}} justifyContent="center">
-                        {plants.map((plant) => { 
+                        <List component="nav" aria-label="main plants base">
+                        {plants && plants.map((plant, i) => { 
                             return (
-                            <> 
-                            <Paper sx={{m:1, width: '100px', height: '150px'}}>
-                                <img />
-                                <Typography variant='subtitle2'>Name: {plant.name}</Typography>
-                                <Box>
-                                <IconButton color="secondary" aria-label="edit">
-                                    <EditRoundedIcon />
-                                </IconButton>
-                                <IconButton edge="end" aria-label="delete">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                 </Box>   
-                            </Paper>
-                          </> 
+                                <ListItemButton
+                                sx={{bgcolor: 'background.paper'}}
+                                selected={selectedIndex === 0}
+                                onClick={(event) => handleListItemClick(event, 0)}
+                                >
+                                    <ListItemAvatar><FolderIcon /></ListItemAvatar>
+                                    <Plant key={i} plant={plant} onUpdate={updatePlant} onDelete={deletePlant} />
+                                </ListItemButton>
                        )
                      })}
+                        </List>
                     </Grid>
+                    <AddPlantButton handleClickAdd={handleClickAdd} />
        </>             
     );
 }
